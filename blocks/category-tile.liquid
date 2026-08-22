@@ -1,7 +1,9 @@
 {%- doc -%}
-  A self-contained category tile: on-brand icon panel + heading + short
-  description, the whole thing linking to a collection. Built to not depend
-  on any collection/product photography, since none may exist yet.
+  A self-contained category tile: heading + short description + a panel
+  linking to a collection. The panel shows a crossfading rotation of that
+  collection's product images when it has any (photos are the merchant's
+  own real inventory), falling back to an on-brand icon when the
+  collection has no products with images yet.
 
   @example
   {% content_for 'block', type: 'category-tile', id: 'category-tile-sealed' %}
@@ -13,6 +15,12 @@
   if collection == blank
     assign onboarding = true
   endif
+
+  assign rotation_images = ''
+  unless onboarding
+    assign rotation_images = collection.products | slice: 0, 6 | map: 'featured_image' | compact
+  endunless
+  assign image_count = rotation_images.size
 %}
 
 <a
@@ -24,7 +32,57 @@
   {{ block.shopify_attributes }}
 >
   <span class="category-tile__panel">
-    <span class="category-tile__icon category-tile__icon--{{ block.settings.icon }}"></span>
+    {% if image_count > 0 %}
+      {% liquid
+        assign per_image_seconds = 4.5
+        assign total_seconds = image_count | times: per_image_seconds
+        assign segment_pct = 100.0 | divided_by: image_count
+        assign fade_pct = segment_pct | times: 0.25 | at_most: 6
+      %}
+      {% style %}
+        .category-tile__rotation--{{ block.id }} {
+          --rotation-duration: {{ total_seconds }}s;
+        }
+        {% for image in rotation_images %}
+          {% liquid
+            assign i = forloop.index0
+            assign start_pct = i | times: segment_pct
+            assign end_pct = start_pct | plus: segment_pct
+            assign visible_start = start_pct | plus: fade_pct
+            assign visible_end = end_pct | minus: fade_pct
+          %}
+          @keyframes category-tile-fade-{{ block.id }}-{{ i }} {
+            0% { opacity: {% if i == 0 %}1{% else %}0{% endif %}; }
+            {% unless i == 0 %}
+              {{ start_pct }}% { opacity: 0; }
+            {% endunless %}
+            {{ visible_start }}% { opacity: 1; }
+            {{ visible_end }}% { opacity: 1; }
+            {{ end_pct }}% { opacity: 0; }
+            100% { opacity: {% if i == 0 %}1{% else %}0{% endif %}; }
+          }
+          @media (prefers-reduced-motion: no-preference) {
+            .category-tile__rotation--{{ block.id }} .category-tile__photo:nth-child({{ forloop.index }}) {
+              animation: category-tile-fade-{{ block.id }}-{{ i }} var(--rotation-duration) infinite;
+            }
+          }
+        {% endfor %}
+      {% endstyle %}
+      <span class="category-tile__rotation category-tile__rotation--{{ block.id }}">
+        {% for image in rotation_images %}
+          <img
+            class="category-tile__photo"
+            src="{{ image | image_url: width: 700 }}"
+            alt=""
+            loading="lazy"
+            width="700"
+            height="{{ 700 | divided_by: image.aspect_ratio | round }}"
+          >
+        {% endfor %}
+      </span>
+    {% else %}
+      <span class="category-tile__icon category-tile__icon--{{ block.settings.icon }}"></span>
+    {% endif %}
   </span>
   <span class="category-tile__body">
     <span class="category-tile__heading h4">{{ block.settings.heading | escape }}</span>
@@ -46,6 +104,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
     aspect-ratio: 16 / 10;
     width: 100%;
     border-radius: var(--style-border-radius-md);
@@ -61,6 +121,35 @@
     transform: translateY(-3px);
     border-color: rgb(var(--brand-gold-rgb) / 0.9);
     box-shadow: 0 8px 24px rgb(var(--brand-gold-rgb) / 0.18);
+  }
+
+  .category-tile__rotation {
+    position: absolute;
+    inset: 0;
+  }
+
+  .category-tile__photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+  }
+
+  /* Static fallback: first photo stays visible when motion is reduced,
+     since the crossfade keyframes are only assigned under
+     (prefers-reduced-motion: no-preference) above. */
+  .category-tile__photo:first-child {
+    opacity: 1;
+  }
+
+  .category-tile__panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(var(--color-background-rgb, 14 20 32) / 0.55), transparent 55%);
+    pointer-events: none;
   }
 
   .category-tile__icon {
