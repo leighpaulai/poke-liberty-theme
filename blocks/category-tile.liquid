@@ -41,7 +41,7 @@
   <span class="category-tile__panel">
     {% if image_count > 0 %}
       {% liquid
-        assign per_image_seconds = 4.5
+        assign per_image_seconds = block.settings.rotation_speed
         assign total_seconds = image_count | times: per_image_seconds
         assign segment_pct = 100.0 | divided_by: image_count
         assign fade_pct = segment_pct | times: 0.25 | at_most: 6
@@ -217,6 +217,16 @@
       "type": "collection",
       "id": "collection",
       "label": "t:settings.collection"
+    },
+    {
+      "type": "range",
+      "id": "rotation_speed",
+      "label": "Seconds per photo",
+      "info": "How long each product photo shows before crossfading to the next. Only matters when the linked collection has more than one product photo.",
+      "min": 2,
+      "max": 12,
+      "step": 0.5,
+      "default": 4.5
     },
     {
       "type": "select",
