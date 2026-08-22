@@ -138,6 +138,23 @@
       "visible_if": "{{ section.settings.layout_type != 'carousel' }}"
     },
     {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-rotate",
+      "default": false,
+      "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true }}"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Auto-rotate speed (seconds)",
+      "min": 3,
+      "max": 60,
+      "step": 1,
+      "default": 30,
+      "visible_if": "{{ section.settings.autoplay == true and (section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true) }}"
+    },
+    {
       "type": "range",
       "id": "max_products",
       "label": "t:settings.product_count",
