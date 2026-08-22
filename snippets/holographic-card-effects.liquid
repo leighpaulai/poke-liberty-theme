@@ -1,0 +1,83 @@
+{%- doc -%}
+  Ink & Gold brand motif: a holographic-foil shimmer sweep across product card
+  media on hover/focus, plus a small lightning-bolt watermark accent in the
+  corner of every card image.
+
+  Rendered from the layout (not from product-card-styles) so it reliably covers
+  every product-card surface, mirroring the pattern used by
+  snippets/card-hover-effect-styles.liquid.
+
+  @example
+  {% render 'holographic-card-effects' %}
+{%- enddoc -%}
+
+{% style %}
+  :root {
+    --brand-gold-rgb: {{ settings.color_palette.color2.rgb }};
+    --brand-gold-deep-rgb: {{ settings.color_palette.color1.rgb }};
+    --brand-parchment-rgb: {{ settings.color_palette.foreground.rgb }};
+  }
+{% endstyle %}
+
+{% stylesheet %}
+  /* Lightning-bolt watermark, masked so it always renders in brand gold */
+  .card-gallery {
+    isolation: isolate;
+  }
+
+  .card-gallery::before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 20px;
+    height: 20px;
+    z-index: var(--layer-raised);
+    pointer-events: none;
+    background-color: rgb(var(--brand-gold-rgb));
+    opacity: 0.55;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 2 3 14h7l-1 8 11-14h-7z'/%3E%3C/svg%3E");
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 2 3 14h7l-1 8 11-14h-7z'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    transition: opacity var(--animation-speed) var(--animation-easing), transform var(--animation-speed-slow) var(--ease-out-cubic);
+  }
+
+  .product-card:hover .card-gallery::before,
+  .product-card:focus-within .card-gallery::before {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+
+  /* Holographic foil shimmer sweep */
+  @media (prefers-reduced-motion: no-preference) {
+    .card-gallery::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: var(--layer-raised);
+      pointer-events: none;
+      opacity: 0;
+      background: linear-gradient(
+        115deg,
+        transparent 35%,
+        rgb(var(--brand-gold-rgb) / 0.5) 47%,
+        rgb(var(--brand-parchment-rgb) / 0.65) 50%,
+        rgb(var(--brand-gold-deep-rgb) / 0.5) 53%,
+        transparent 65%
+      );
+      background-size: 250% 250%;
+      background-position: -20% -20%;
+      transition: opacity var(--animation-speed-slow) var(--animation-easing),
+        background-position 0.9s var(--ease-out-cubic);
+    }
+
+    .product-card:hover .card-gallery::after,
+    .product-card:focus-within .card-gallery::after {
+      opacity: 1;
+      background-position: 120% 120%;
+    }
+  }
+{% endstylesheet %}
