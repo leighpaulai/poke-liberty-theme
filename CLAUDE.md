@@ -40,11 +40,13 @@ Same legal entity (Liberty TCG LLC) and same visual system (navy/gold/parchment 
 
 **Also done**: header logo swapped to `LibertyTCG_Logo_Full_Transparent.png` (uploaded via Admin API staged-upload, `config/settings_data.json`'s `settings.logo` repointed — commit `f5a56fe`). The homepage hero (`templates/index.json`) still uses the original `PokeLiberty_Hero_Banner.png` as its background image — kept intentionally per direct request (it's a card-graphic, not brand text, so no rebrand conflict).
 
+**Also done**: public domain — `libertytcgshop.com` is confirmed as the store's primary domain (verified via `shop { primaryDomain }`), with `poke-liberty.myshopify.com` 301-redirecting to it.
+
 **Not done — needs a Shopify CLI/Admin session** (these aren't reachable via a git file edit; they're Shopify-hosted settings uploaded/changed through the Admin or Theme Editor):
-- **Favicon** — upload `LibertyTCG_Favicon_32.png` (Theme Settings / Admin → General).
+- **Favicon** — upload `LibertyTCG_Favicon_32.png` (Theme Settings / Admin → General). Confirmed still unset — no `favicon` key in `config/settings_data.json`.
 - **Social sharing image** — upload `LibertyTCG_Social_Share_1200x628.png` via Online Store → Preferences.
 - **SEO title/meta description** — update under Online Store → Preferences to reference "Liberty TCG".
-- **Public domain** — point libertytcgshop.com at the store and set it primary under Settings → Domains; decide/configure the pokeliberty.com → libertytcgshop.com redirect.
+- **Shop's registered name** — `shop.name` (Settings → General) is still "Poke Liberty" (confirmed via Admin API); this is what shows in Shopify's own admin chrome, emails, etc., separate from the theme content.
 - **Unpublished theme's display name** in Shopify admin — still "Poke Liberty — Ink & Gold"; rename it, then update the "Deployment workflow" section above to match.
 - The 4 new logo/icon/social files are staged in iCloud Drive under the "Liberty TCG" folder, ready for upload.
 
@@ -89,3 +91,7 @@ Block IDs (the JSON object keys under a section's/block's `"blocks"`) must be un
 
 ### Test / dummy data
 The store's product catalog is currently mostly placeholder: ~24 fake products (fictional names, no real product photography — flat on-brand SVG/PNG icon placeholders instead) were created via the Admin API to exercise collection/grid layouts before real inventory exists. Every one of them is tagged **`test-data`**, split evenly across `product_type` "Sealed Product" / "Singles" / "Grading-Ready Pulls". To bulk-remove them once real inventory arrives: filter the Shopify admin product list by `tag:test-data` (or query `products(query: "tag:test-data")` via the Admin API) and delete in bulk. The 3 real collections (`sealed-product`, `singles`, `grading-ready-pulls`) and the `blocks/category-tile.liquid` homepage tiles are not test data — they stay.
+
+**Depends on the test data:** 6 of those 24 are additionally tagged `showcase` and feed the homepage's "Showcase carousel" section (`product_list_fa6P9H`, `collection: "showcase"`) — an automated collection ruled on tag `showcase`. Deleting the test-data products will empty that carousel; tag real products `showcase` (any count) to replace them, or the section will just render with nothing in it.
+
+**Collections created via the Admin API need an explicit publish step** — see the gotcha further down (`publishablePublish`) — this will matter again once real inventory/collections get created through the API rather than the Admin UI.
