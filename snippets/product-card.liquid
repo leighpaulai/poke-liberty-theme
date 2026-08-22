@@ -114,7 +114,51 @@
     "
   >
     {{ children }}
+
+    {% unless onboarding %}
+      {% render 'product-card-stock-status', product: product %}
+      {% if settings.quick_add %}
+        <div class="product-card__buy-row">
+          {% render 'quick-add', product: product, section_id: section.id %}
+        </div>
+      {% endif %}
+    {% endunless %}
   </div>
 </product-card>
 
 {% render 'product-card-styles' %}
+
+{% stylesheet %}
+  /* Relocates the quick-add component (image-overlay pill, hover-only by
+     design elsewhere in this theme — e.g. product hotspots) into normal
+     card flow as an always-visible, full-width button matching the
+     site's standard .button styling. Scoped to .product-card__buy-row
+     only, so the original floating-pill behavior used in other contexts
+     (product hotspots, recommendation carousels) is untouched. */
+  .product-card__buy-row {
+    position: static;
+    width: 100%;
+  }
+
+  .product-card__buy-row .quick-add {
+    position: static;
+    inset: auto;
+    pointer-events: auto;
+  }
+
+  .product-card__buy-row .quick-add__button {
+    position: static !important;
+    display: flex !important;
+    opacity: 1 !important;
+    width: 100%;
+    max-inline-size: 100%;
+    inline-size: 100%;
+    justify-content: center;
+    scale: 1 !important;
+  }
+
+  .product-card__buy-row .quick-add__button:disabled {
+    opacity: var(--opacity-muted-text) !important;
+    cursor: not-allowed;
+  }
+{% endstylesheet %}

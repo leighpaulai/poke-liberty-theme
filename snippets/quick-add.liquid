@@ -22,6 +22,9 @@
     assign can_add_to_cart = true
   else
     assign can_add_to_cart = false
+    # Overrides the default "Add" label so a disabled button reads "Sold
+    # out" instead of an add-to-cart action that would just fail.
+    assign add_to_cart_text = 'products.product.sold_out' | t
   endif
 
   # Both buttons are rendered together only for single-option swatch products - the one
@@ -120,7 +123,7 @@
           add_to_cart_text: add_to_cart_text,
           class: 'quick-add__button quick-add__button--add add-to-cart-button',
           can_add_to_cart: can_add_to_cart,
-          show_icon: true,
+          show_icon: can_add_to_cart,
           product: product
         %}
       {%- endform -%}

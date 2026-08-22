@@ -1,0 +1,65 @@
+{%- doc -%}
+  Renders a small stock-status line for a product card: "In Stock" /
+  "Only [X] left" / "Sold out", using the product's real Shopify inventory
+  quantity (selected/first available variant). The "low stock" threshold
+  is a merchant-adjustable Theme Editor setting
+  (settings.low_stock_threshold, see config/settings_schema.json under
+  "Product cards" — no code change needed to adjust it later).
+
+  Untracked variants (inventory not managed by Shopify) fall through to
+  "In Stock" rather than a quantity, since there's no real count to show.
+
+  @param {object} product - The product object
+
+  @example
+  {% render 'product-card-stock-status', product: product %}
+{%- enddoc -%}
+
+{% liquid
+  if product == blank
+    assign show_status = false
+  else
+    assign variant = product.selected_or_first_available_variant
+    assign show_status = true
+    assign is_available = variant.available
+    assign tracks_inventory = false
+    if variant.inventory_management != blank
+      assign tracks_inventory = true
+    endif
+    assign qty = variant.inventory_quantity
+    assign is_low_stock = false
+    if tracks_inventory and is_available and qty > 0 and qty <= settings.low_stock_threshold
+      assign is_low_stock = true
+    endif
+  endif
+%}
+
+{% if show_status %}
+  <p
+    class="product-card-stock-status{% unless is_available %} product-card-stock-status--sold-out{% elsif is_low_stock %} product-card-stock-status--low{% endif %}"
+  >
+    {%- if is_available == false -%}
+      {{ 'products.product.sold_out' | t }}
+    {%- elsif is_low_stock -%}
+      {{ 'content.only_x_left' | t: count: qty }}
+    {%- else -%}
+      {{ 'content.in_stock' | t }}
+    {%- endif -%}
+  </p>
+{% endif %}
+
+{% stylesheet %}
+  .product-card-stock-status {
+    font-size: var(--font-size--2xs);
+    color: var(--color-foreground);
+    opacity: var(--opacity-muted-text);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .product-card-stock-status--low {
+    color: rgb(var(--brand-gold-rgb));
+    opacity: 1;
+    font-weight: 600;
+  }
+{% endstylesheet %}
