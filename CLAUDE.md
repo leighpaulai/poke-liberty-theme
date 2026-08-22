@@ -38,8 +38,9 @@ Same legal entity (Liberty TCG LLC) and same visual system (navy/gold/parchment 
 
 **Done** (`brand-refresh-ink-gold` branch, commit `d228c4e`): full-repo text sweep for "Poke Liberty" — homepage rich-text heading and this doc's own prose updated to "Liberty TCG". Confirmed via grep that no `hello@pokeliberty.com` references exist anywhere in the theme files.
 
+**Also done**: header logo swapped to `LibertyTCG_Logo_Full_Transparent.png` (uploaded via Admin API staged-upload, `config/settings_data.json`'s `settings.logo` repointed — commit `f5a56fe`). The homepage hero (`templates/index.json`) still uses the original `PokeLiberty_Hero_Banner.png` as its background image — kept intentionally per direct request (it's a card-graphic, not brand text, so no rebrand conflict).
+
 **Not done — needs a Shopify CLI/Admin session** (these aren't reachable via a git file edit; they're Shopify-hosted settings uploaded/changed through the Admin or Theme Editor):
-- **Header logo** — upload `LibertyTCG_Logo_Full_Transparent.png` via Theme Editor → Header → Logo. Currently still points at `shopify://shop_images/PokeLiberty_Logo_Full_Transparent.png` (`config/settings_data.json`).
 - **Favicon** — upload `LibertyTCG_Favicon_32.png` (Theme Settings / Admin → General).
 - **Social sharing image** — upload `LibertyTCG_Social_Share_1200x628.png` via Online Store → Preferences.
 - **SEO title/meta description** — update under Online Store → Preferences to reference "Liberty TCG".
@@ -73,6 +74,12 @@ Interactive UI is built as custom elements (`<header-component>`, `<product-card
 
 ### Product taxonomy
 Products are categorized by `product_type` (e.g. `"Sealed Product"`, `"Singles"`, `"Grading-Ready Pulls"`), which backs automated (rule-based) collections — this is the pattern to extend when adding new product categories (e.g. future TCG supplies) rather than manual/hand-curated collections. The homepage surfaces these via `blocks/category-tile.liquid` (a self-contained, image-free tile — icon panel + heading + description + collection link) rather than Shopify's built-in `collection-card`/`_collection-card-image`, since those depend on real collection photography that doesn't exist yet.
+
+### Homepage structure (`templates/index.json`)
+Three sections in order: `hero_lbty01` (heading + "We're collectors first" text + "Shop now" button, background image `PokeLiberty_Hero_Banner.png`) → `category_tiles_lbty` (the 3 `category-tile` blocks, its own section so the hero's background image isn't stretched across their height) → `product_list_fa6P9H` ("Showcase" carousel, see below).
+
+### Showcase carousel
+`product_list_fa6P9H` is pointed at the `showcase` collection (automated: tag `showcase`, created via Admin API — see the publishing gotcha above, already published), `layout_type: carousel`, 4 columns, `autoplay: true` / `autoplay_speed: 30` (added to `sections/product-list.liquid`'s schema — off by default everywhere else, see git history for why: the underlying `slideshow-component` already supported autoplay, it just wasn't threaded through `resource-list-carousel.liquid` until this). **To change which products show in the Showcase carousel:** add or remove the `showcase` tag on any product in Shopify Admin — no theme edit needed. A product keeps showing under its real category collection/page either way; the tag only controls Showcase membership.
 
 ### JSON template block IDs must be unique per section, including nested ones
 Block IDs (the JSON object keys under a section's/block's `"blocks"`) must be unique across the **entire** section, not just unique among siblings — that includes static sub-blocks nested inside other blocks. Reusing the same ID in two different blocks (e.g. two `collection-card` blocks that each nest a static `_collection-card-image` block under the identical key) causes Shopify to conflate which block's content belongs to which instance, and content silently fails to render for the colliding ones — no error, just a blank result. Give every block instance in a template/section JSON file, at every nesting level, its own unique key.
