@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "Tải video: {{ description }}",
     "sold_out": "Hết hàng",
@@ -285,7 +284,9 @@
     },
     "item_count_cutoff": "Hơn {{ count }} mặt hàng",
     "quick_order_list": "Danh sách đặt hàng nhanh",
-    "product_disclosures": "Thông tin công bố sản phẩm"
+    "product_disclosures": "Thông tin công bố sản phẩm",
+    "in_stock": "Còn hàng",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {

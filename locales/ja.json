@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "ビデオを読み込む: {{ description }}",
     "sold_out": "売り切れ",
@@ -285,7 +284,9 @@
       "other": "{{ count }}個のアイテムがカートに追加されました"
     },
     "quick_order_list": "クイック注文リスト",
-    "product_disclosures": "商品の開示情報"
+    "product_disclosures": "商品の開示情報",
+    "in_stock": "在庫あり",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {

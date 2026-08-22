@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "accessibility": {
     "account": "חשבון",
     "active_filters": "מסננים פעילים:",
@@ -319,7 +318,9 @@
       "other": "{{ count }} פריטים נוספו לסל",
       "many": "{{ count }} פריטים נוספו לסל",
       "two": "{{ count }} פריטים נוספו לסל"
-    }
+    },
+    "in_stock": "במלאי",
+    "only_x_left": "Only {{ count }} left"
   },
   "fields": {
     "separator": "עד"

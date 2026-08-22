@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "Lataa video: {{ description }}",
     "sold_out": "Loppuunmyyty",
@@ -285,7 +284,9 @@
       "other": "{{ count }} tuotetta lisätty ostoskoriin"
     },
     "quick_order_list": "Pikatilausluettelo",
-    "product_disclosures": "Tuoteilmoitukset"
+    "product_disclosures": "Tuoteilmoitukset",
+    "in_stock": "Varastossa",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {

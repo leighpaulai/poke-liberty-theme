@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "Charger la vidéo : {{ description }}",
     "sold_out": "Épuisé",
@@ -291,7 +290,9 @@
       "many": "{{ count }} articles ajoutés au panier"
     },
     "quick_order_list": "Liste de commande rapide",
-    "product_disclosures": "Informations sur le produit"
+    "product_disclosures": "Informations sur le produit",
+    "in_stock": "En stock",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {

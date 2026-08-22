@@ -36,7 +36,7 @@
 
 {% if show_status %}
   <p
-    class="product-card-stock-status{% unless is_available %} product-card-stock-status--sold-out{% elsif is_low_stock %} product-card-stock-status--low{% endif %}"
+    class="product-card-stock-status{% if is_available == false %} product-card-stock-status--sold-out{% elsif is_low_stock %} product-card-stock-status--low{% endif %}"
   >
     {%- if is_available == false -%}
       {{ 'products.product.sold_out' | t }}

@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "Učitaj videozapis: {{ description }}",
     "sold_out": "Rasprodano",
@@ -291,7 +290,9 @@
       "few": "Artikala dodano u košaricu: {{ count }}"
     },
     "quick_order_list": "Brzi popis narudžbi",
-    "product_disclosures": "Obavijesti o proizvodu"
+    "product_disclosures": "Obavijesti o proizvodu",
+    "in_stock": "Na zalihama",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {

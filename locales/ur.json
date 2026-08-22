@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "accessibility": {
     "account": "اکاؤنٹ",
     "active_filters": "فعال فلٹر:",
@@ -305,7 +304,9 @@
     "items_added_to_cart": {
       "one": "کارٹ میں 1 آئٹم شامل کر دیا گیا",
       "other": "کارٹ میں {{ count }} آئٹم شامل کر دیے گئے"
-    }
+    },
+    "in_stock": "سٹاک میں ہے",
+    "only_x_left": "Only {{ count }} left"
   },
   "fields": {
     "separator": "تا"

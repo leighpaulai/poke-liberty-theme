@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "Videoyu yükle: {{ description }}",
     "sold_out": "Tükendi",
@@ -285,7 +284,9 @@
     },
     "item_count_cutoff": "{{ count }} adetten fazla ürün",
     "quick_order_list": "Hızlı sipariş listesi",
-    "product_disclosures": "Ürün bildirimleri"
+    "product_disclosures": "Ürün bildirimleri",
+    "in_stock": "Stokta",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {

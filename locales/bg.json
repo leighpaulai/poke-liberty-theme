@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "Зареждане на видео: {{ description }}",
     "sold_out": "Изчерпано",
@@ -285,7 +284,9 @@
       "other": "{{ count }} артикула са добавени в количката"
     },
     "quick_order_list": "Бърз списък с поръчки",
-    "product_disclosures": "Оповестявания за продукта"
+    "product_disclosures": "Оповестявания за продукта",
+    "in_stock": "В наличност",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {

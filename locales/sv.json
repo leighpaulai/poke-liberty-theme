@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "Ladda video: {{ description }}",
     "sold_out": "Slutsåld",
@@ -285,7 +284,9 @@
     },
     "item_count_cutoff": "Fler än {{ count }} artiklar",
     "quick_order_list": "Snabborderlista",
-    "product_disclosures": "Produktupplysningar"
+    "product_disclosures": "Produktupplysningar",
+    "in_stock": "I lager",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {

@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "accessibility": {
     "account": "الحساب",
     "active_filters": "عوامل التصفية النشطة:",
@@ -333,7 +332,9 @@
       "many": "تمت إضافة {{ count }} من العناصر إلى سلة التسوق",
       "two": "تمت إضافة {{ count }} من العناصر إلى سلة التسوق",
       "zero": "تمت إضافة {{ count }} من العناصر إلى سلة التسوق"
-    }
+    },
+    "in_stock": "متوفر في المخزون",
+    "only_x_left": "Only {{ count }} left"
   },
   "fields": {
     "separator": "إلى"

@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "blocks": {
     "load_video": "Videó betöltése: {{ description }}",
     "sold_out": "Elfogyott",
@@ -285,7 +284,9 @@
     },
     "item_count_cutoff": "Több mint {{ count }} tétel",
     "quick_order_list": "Gyorsrendelési lista",
-    "product_disclosures": "Terméktájékoztatók"
+    "product_disclosures": "Terméktájékoztatók",
+    "in_stock": "Készleten",
+    "only_x_left": "Only {{ count }} left"
   },
   "gift_cards": {
     "issued": {
