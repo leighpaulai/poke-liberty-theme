@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
@@ -294,339 +293,6 @@
         "padding-block-end": 48
       }
     },
-    "section_XyR73i": {
-      "type": "section",
-      "blocks": {
-        "group_KEqgtH": {
-          "type": "group",
-          "name": "t:names.column",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_Xrhfkw": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>Fresh Sealed Product</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_3U3m9j": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>Booster packs, boxes, and mini-sets from the newest releases, sourced through official wholesale channels.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_Xrhfkw",
-            "text_3U3m9j"
-          ]
-        },
-        "group_CEnhbN": {
-          "type": "group",
-          "name": "t:names.column",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_XnxUxT": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>Quality first</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_pkn6Nq": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>We obsess over the details and strive to deliver the best products at the best prices, every time.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_XnxUxT",
-            "text_pkn6Nq"
-          ]
-        },
-        "group_gdBLP6": {
-          "type": "group",
-          "name": "t:names.column",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_Ey88Td": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>Customer care</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_ce9Hgc": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>We're always on your side: keeping our loyal customers happy is our top priority and number one goal.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_Ey88Td",
-            "text_ce9Hgc"
-          ]
-        }
-      },
-      "block_order": [
-        "group_KEqgtH",
-        "group_CEnhbN",
-        "group_gdBLP6"
-      ],
-      "name": "t:names.multicolumn",
-      "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "flex-start",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
     "section_WTQwyt": {
       "type": "section",
       "blocks": {
@@ -634,7 +300,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Why Poke Liberty</h2>",
+            "text": "<h2>Poke Liberty</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -660,7 +326,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>We're not a warehouse — we're collectors first. Every pack we sell comes straight from authorized wholesale channels, never gray-market, so what you open is guaranteed authentic. Every single card is hand-checked before it's listed, not bulk-scanned. And every pull we grade-source is handled the way we'd want our own cards handled.</p><p>Built for the Kansas City TCG community — local pickup, real people, real cards.</p>",
+            "text": "<p>We're collectors first — every pack sourced through authorized wholesale channels, every card hand-checked before it's listed.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -736,12 +402,251 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "collection_tiles_pl01": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_card_sealed": {
+          "type": "collection-card",
+          "name": "Sealed Product tile",
+          "blocks": {
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "static": true
+            },
+            "tile_heading_sealed": {
+              "type": "text",
+              "settings": {
+                "text": "<h3>Fresh Sealed Product</h3>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "tile_text_sealed": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Booster packs, boxes, and the newest releases</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "tile_heading_sealed",
+            "tile_text_sealed"
+          ],
+          "settings": {
+            "collection": "sealed-product",
+            "placement": "below_image",
+            "horizontal_alignment": "flex-start",
+            "collection_card_gap": 8,
+            "background_color": "",
+            "border": "solid",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "{{ settings.color_palette.color2 }}",
+            "border_radius": 8
+          }
+        },
+        "collection_card_singles": {
+          "type": "collection-card",
+          "name": "Singles tile",
+          "blocks": {
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "static": true
+            },
+            "tile_heading_singles": {
+              "type": "text",
+              "settings": {
+                "text": "<h3>Hand-Picked Singles</h3>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "tile_text_singles": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Every card checked by hand before it's listed</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "tile_heading_singles",
+            "tile_text_singles"
+          ],
+          "settings": {
+            "collection": "singles",
+            "placement": "below_image",
+            "horizontal_alignment": "flex-start",
+            "collection_card_gap": 8,
+            "background_color": "",
+            "border": "solid",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "{{ settings.color_palette.color2 }}",
+            "border_radius": 8
+          }
+        },
+        "collection_card_grading": {
+          "type": "collection-card",
+          "name": "Grading-Ready Pulls tile",
+          "blocks": {
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "static": true
+            },
+            "tile_heading_grading": {
+              "type": "text",
+              "settings": {
+                "text": "<h3>Grading-Ready Pulls</h3>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "tile_text_grading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Handled the way we'd want our own cards handled</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "tile_heading_grading",
+            "tile_text_grading"
+          ],
+          "settings": {
+            "collection": "grading-ready-pulls",
+            "placement": "below_image",
+            "horizontal_alignment": "flex-start",
+            "collection_card_gap": 8,
+            "background_color": "",
+            "border": "solid",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "{{ settings.color_palette.color2 }}",
+            "border_radius": 8
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_sealed",
+        "collection_card_singles",
+        "collection_card_grading"
+      ],
+      "name": "t:names.collection_list",
+      "settings": {
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "columns": 3,
+        "mobile_columns": "1",
+        "columns_gap": 20,
+        "rows_gap": 20,
+        "section_width": "page-width",
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 0,
+        "padding-block-end": 48
+      }
     }
   },
   "order": [
+    "section_WTQwyt",
+    "collection_tiles_pl01",
     "hero_jVaWmY",
-    "product_list_fa6P9H",
-    "section_XyR73i",
-    "section_WTQwyt"
+    "product_list_fa6P9H"
   ]
 }
