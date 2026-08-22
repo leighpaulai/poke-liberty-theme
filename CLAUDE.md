@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Shopify **Horizon** theme (v4.1.4) for Poke Liberty, a Pokémon TCG store. Pure Liquid/CSS/JS — no bundler, no package.json build step, no test framework. The only tooling is the Shopify CLI.
+A Shopify **Horizon** theme (v4.1.4) for Liberty TCG (formerly "Poke Liberty" — renamed Aug 2026, same legal entity Liberty TCG LLC), a Pokémon TCG store. Pure Liquid/CSS/JS — no bundler, no package.json build step, no test framework. The only tooling is the Shopify CLI.
 
 ## Commands
 
@@ -30,7 +30,7 @@ No linter/formatter config (no ESLint/Stylelint/Prettier), no `.gitignore`, no t
 
 ## Deployment workflow used in this repo
 
-Live theme changes are never made directly. Work happens on a git branch (currently `brand-refresh-ink-gold`), gets pushed to a dedicated **unpublished** theme in the store ("Poke Liberty — Ink & Gold"), and is reviewed via that theme's preview URL before anyone publishes it. Keep following this pattern unless told otherwise: branch → edit → `shopify theme check` → `shopify theme push --theme=<unpublished-theme-id>` → share the preview link.
+Live theme changes are never made directly. Work happens on a git branch (currently `brand-refresh-ink-gold`), gets pushed to a dedicated **unpublished** theme in the store — still named "Poke Liberty — Ink & Gold" in Shopify admin as of this doc; rename it to match the new brand next time you're pushing from a CLI-equipped machine, then update this line — and is reviewed via that theme's preview URL before anyone publishes it. Keep following this pattern unless told otherwise: branch → edit → `shopify theme check` → `shopify theme push --theme=<unpublished-theme-id>` → share the preview link.
 
 ## Architecture
 
