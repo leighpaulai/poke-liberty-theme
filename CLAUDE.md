@@ -32,6 +32,23 @@ No linter/formatter config (no ESLint/Stylelint/Prettier), no `.gitignore`, no t
 
 Live theme changes are never made directly. Work happens on a git branch (currently `brand-refresh-ink-gold`), gets pushed to a dedicated **unpublished** theme in the store — still named "Poke Liberty — Ink & Gold" in Shopify admin as of this doc; rename it to match the new brand next time you're pushing from a CLI-equipped machine, then update this line — and is reviewed via that theme's preview URL before anyone publishes it. Keep following this pattern unless told otherwise: branch → edit → `shopify theme check` → `shopify theme push --theme=<unpublished-theme-id>` → share the preview link.
 
+## Rebrand status: Poke Liberty → Liberty TCG (Aug 2026)
+
+Same legal entity (Liberty TCG LLC) and same visual system (navy/gold/parchment palette, Fraunces/Space Grotesk, holo-card + lightning-bolt motif) — this is a name change, not a redesign. New customer-facing domain: **libertytcgshop.com** (pokeliberty.com being retired/forwarded).
+
+**Done** (`brand-refresh-ink-gold` branch, commit `d228c4e`): full-repo text sweep for "Poke Liberty" — homepage rich-text heading and this doc's own prose updated to "Liberty TCG". Confirmed via grep that no `hello@pokeliberty.com` references exist anywhere in the theme files.
+
+**Not done — needs a Shopify CLI/Admin session** (these aren't reachable via a git file edit; they're Shopify-hosted settings uploaded/changed through the Admin or Theme Editor):
+- **Header logo** — upload `LibertyTCG_Logo_Full_Transparent.png` via Theme Editor → Header → Logo. Currently still points at `shopify://shop_images/PokeLiberty_Logo_Full_Transparent.png` (`config/settings_data.json`).
+- **Favicon** — upload `LibertyTCG_Favicon_32.png` (Theme Settings / Admin → General).
+- **Social sharing image** — upload `LibertyTCG_Social_Share_1200x628.png` via Online Store → Preferences.
+- **SEO title/meta description** — update under Online Store → Preferences to reference "Liberty TCG".
+- **Public domain** — point libertytcgshop.com at the store and set it primary under Settings → Domains; decide/configure the pokeliberty.com → libertytcgshop.com redirect.
+- **Unpublished theme's display name** in Shopify admin — still "Poke Liberty — Ink & Gold"; rename it, then update the "Deployment workflow" section above to match.
+- The 4 new logo/icon/social files are staged in iCloud Drive under the "Liberty TCG" folder, ready for upload.
+
+**Deliberately left as-is, not an oversight:** `poke-liberty.myshopify.com` (the store's actual Shopify infra subdomain — a separate, bigger action from a branding text change, not requested).
+
 ## Architecture
 
 ### Section groups, sections, blocks — the composition model
