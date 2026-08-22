@@ -1,0 +1,160 @@
+{%- doc -%}
+  A self-contained category tile: on-brand icon panel + heading + short
+  description, the whole thing linking to a collection. Built to not depend
+  on any collection/product photography, since none may exist yet.
+
+  @example
+  {% content_for 'block', type: 'category-tile', id: 'category-tile-sealed' %}
+{%- enddoc -%}
+
+{% liquid
+  assign collection = block.settings.collection
+  assign onboarding = false
+  if collection == blank
+    assign onboarding = true
+  endif
+%}
+
+<a
+  href="{% unless onboarding %}{{ collection.url }}{% else %}#{% endunless %}"
+  class="category-tile"
+  {% if onboarding %}
+    data-placeholder="true"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  <span class="category-tile__panel">
+    <span class="category-tile__icon category-tile__icon--{{ block.settings.icon }}"></span>
+  </span>
+  <span class="category-tile__body">
+    <span class="category-tile__heading h4">{{ block.settings.heading | escape }}</span>
+    <span class="category-tile__description">{{ block.settings.description | escape }}</span>
+  </span>
+</a>
+
+{% stylesheet %}
+  .category-tile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+    width: 100%;
+    text-decoration: none;
+    color: var(--color-foreground);
+  }
+
+  .category-tile__panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    border-radius: var(--style-border-radius-md);
+    border: 1px solid rgb(var(--brand-gold-rgb) / 0.55);
+    background: linear-gradient(135deg, var(--color-background), color-mix(in srgb, var(--color-background) 65%, white));
+    transition: transform var(--animation-speed-slow) var(--ease-out-cubic),
+      box-shadow var(--animation-speed-slow) var(--ease-out-cubic),
+      border-color var(--animation-speed-slow) var(--ease-out-cubic);
+  }
+
+  .category-tile:hover .category-tile__panel,
+  .category-tile:focus-visible .category-tile__panel {
+    transform: translateY(-3px);
+    border-color: rgb(var(--brand-gold-rgb) / 0.9);
+    box-shadow: 0 8px 24px rgb(var(--brand-gold-rgb) / 0.18);
+  }
+
+  .category-tile__icon {
+    width: 25%;
+    aspect-ratio: 1;
+    background-color: rgb(var(--brand-gold-rgb));
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+  }
+
+  .category-tile__icon--sealed {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='8' width='12' height='12' rx='2'/%3E%3Crect x='8' y='4' width='12' height='12' rx='2'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='8' width='12' height='12' rx='2'/%3E%3Crect x='8' y='4' width='12' height='12' rx='2'/%3E%3C/svg%3E");
+  }
+
+  .category-tile__icon--singles {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='3' width='14' height='18' rx='2'/%3E%3Cpath d='M12 9 L12.8 11.2 L15 12 L12.8 12.8 L12 15 L11.2 12.8 L9 12 L11.2 11.2 Z' fill='black' stroke='none'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='3' width='14' height='18' rx='2'/%3E%3Cpath d='M12 9 L12.8 11.2 L15 12 L12.8 12.8 L12 15 L11.2 12.8 L9 12 L11.2 11.2 Z' fill='black' stroke='none'/%3E%3C/svg%3E");
+  }
+
+  .category-tile__icon--grading {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 L19 6 V11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 V6 Z'/%3E%3Cpath d='M8.5 12.3 L11 14.8 L15.5 9.8'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 L19 6 V11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 V6 Z'/%3E%3Cpath d='M8.5 12.3 L11 14.8 L15.5 9.8'/%3E%3C/svg%3E");
+  }
+
+  .category-tile__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2xs);
+  }
+
+  .category-tile__heading {
+    color: var(--color-foreground);
+  }
+
+  .category-tile__description {
+    color: var(--color-foreground-subdued);
+    font-size: var(--font-size--sm);
+    line-height: var(--line-height--body-normal);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Category tile",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:settings.collection"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:settings.icon",
+      "options": [
+        {
+          "value": "sealed",
+          "label": "Sealed product (card stack)"
+        },
+        {
+          "value": "singles",
+          "label": "Singles (card + star)"
+        },
+        {
+          "value": "grading",
+          "label": "Grading (shield + check)"
+        }
+      ],
+      "default": "sealed"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Category"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Short category description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category tile",
+      "category": "t:categories.collection"
+    }
+  ]
+}
+{% endschema %}
