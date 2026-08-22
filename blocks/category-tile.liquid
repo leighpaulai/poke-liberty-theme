@@ -17,9 +17,9 @@
   endif
 
   # collection.products doesn't reliably support generic array filters
-  # (slice/map) outside a {% paginate %} context in this codebase's Liquid
-  # environment -- the proven pattern everywhere else here is a plain
-  # `for ... limit:` loop, so count via that instead.
+  # (slice/map) outside an explicit pagination context here -- the proven
+  # pattern everywhere else in this codebase is a plain for-loop with a
+  # limit argument, so count via that instead.
   assign image_count = 0
   unless onboarding
     for product in collection.products limit: 6
