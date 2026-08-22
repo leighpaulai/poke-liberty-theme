@@ -16,11 +16,18 @@
     assign onboarding = true
   endif
 
-  assign rotation_images = ''
+  # collection.products doesn't reliably support generic array filters
+  # (slice/map) outside a {% paginate %} context in this codebase's Liquid
+  # environment -- the proven pattern everywhere else here is a plain
+  # `for ... limit:` loop, so count via that instead.
+  assign image_count = 0
   unless onboarding
-    assign rotation_images = collection.products | slice: 0, 6 | map: 'featured_image' | compact
+    for product in collection.products limit: 6
+      if product.featured_image != blank
+        assign image_count = image_count | plus: 1
+      endif
+    endfor
   endunless
-  assign image_count = rotation_images.size
 %}
 
 <a
@@ -43,41 +50,46 @@
         .category-tile__rotation--{{ block.id }} {
           --rotation-duration: {{ total_seconds }}s;
         }
-        {% for image in rotation_images %}
-          {% liquid
-            assign i = forloop.index0
-            assign start_pct = i | times: segment_pct
-            assign end_pct = start_pct | plus: segment_pct
-            assign visible_start = start_pct | plus: fade_pct
-            assign visible_end = end_pct | minus: fade_pct
-          %}
-          @keyframes category-tile-fade-{{ block.id }}-{{ i }} {
-            0% { opacity: {% if i == 0 %}1{% else %}0{% endif %}; }
-            {% unless i == 0 %}
-              {{ start_pct }}% { opacity: 0; }
-            {% endunless %}
-            {{ visible_start }}% { opacity: 1; }
-            {{ visible_end }}% { opacity: 1; }
-            {{ end_pct }}% { opacity: 0; }
-            100% { opacity: {% if i == 0 %}1{% else %}0{% endif %}; }
-          }
-          @media (prefers-reduced-motion: no-preference) {
-            .category-tile__rotation--{{ block.id }} .category-tile__photo:nth-child({{ forloop.index }}) {
-              animation: category-tile-fade-{{ block.id }}-{{ i }} var(--rotation-duration) infinite;
+        {% assign i = 0 %}
+        {% for product in collection.products limit: 6 %}
+          {% if product.featured_image != blank %}
+            {% liquid
+              assign start_pct = i | times: segment_pct
+              assign end_pct = start_pct | plus: segment_pct
+              assign visible_start = start_pct | plus: fade_pct
+              assign visible_end = end_pct | minus: fade_pct
+            %}
+            @keyframes category-tile-fade-{{ block.id }}-{{ i }} {
+              0% { opacity: {% if i == 0 %}1{% else %}0{% endif %}; }
+              {% unless i == 0 %}
+                {{ start_pct }}% { opacity: 0; }
+              {% endunless %}
+              {{ visible_start }}% { opacity: 1; }
+              {{ visible_end }}% { opacity: 1; }
+              {{ end_pct }}% { opacity: 0; }
+              100% { opacity: {% if i == 0 %}1{% else %}0{% endif %}; }
             }
-          }
+            @media (prefers-reduced-motion: no-preference) {
+              .category-tile__rotation--{{ block.id }} .category-tile__photo:nth-child({{ i | plus: 1 }}) {
+                animation: category-tile-fade-{{ block.id }}-{{ i }} var(--rotation-duration) infinite;
+              }
+            }
+            {% assign i = i | plus: 1 %}
+          {% endif %}
         {% endfor %}
       {% endstyle %}
       <span class="category-tile__rotation category-tile__rotation--{{ block.id }}">
-        {% for image in rotation_images %}
-          <img
-            class="category-tile__photo"
-            src="{{ image | image_url: width: 700 }}"
-            alt=""
-            loading="lazy"
-            width="700"
-            height="{{ 700 | divided_by: image.aspect_ratio | round }}"
-          >
+        {% for product in collection.products limit: 6 %}
+          {% if product.featured_image != blank %}
+            <img
+              class="category-tile__photo"
+              src="{{ product.featured_image | image_url: width: 700 }}"
+              alt=""
+              loading="lazy"
+              width="700"
+              height="{{ 700 | divided_by: product.featured_image.aspect_ratio | round }}"
+            >
+          {% endif %}
         {% endfor %}
       </span>
     {% else %}
