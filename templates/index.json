@@ -8,25 +8,25 @@
  * ------------------------------------------------------------
  */{
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "hero_lbty01": {
+      "type": "section",
       "blocks": {
-        "text_YLPk4p": {
+        "text_ak9aRq": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
+            "text": "<h2>Liberty TCG</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "rte",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
+            "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.foreground }}",
+            "text_color": "",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -37,17 +37,43 @@
           },
           "blocks": {}
         },
-        "button_H9gpTf": {
+        "text_ymqw39": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>We're collectors first — every pack sourced through authorized wholesale channels, every card hand-checked before it's listed.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_wRiFF7": {
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop all",
+            "label": "Shop now",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0,0,0,0)",
-            "custom_button_text": "{{ settings.color_palette.foreground }}",
-            "custom_button_border": "{{ settings.color_palette.foreground }}",
+            "style_class": "button",
+            "custom_button_background": "{{ settings.color_palette.foreground }}",
+            "custom_button_text": "{{ settings.color_palette.background }}",
+            "custom_button_border": "{{ settings.color_palette.background }}",
             "link_text_color": "",
             "width": "fit-content",
             "custom_width": 100,
@@ -55,43 +81,122 @@
             "custom_width_mobile": 100
           },
           "blocks": {}
+        },
+        "tiles_row": {
+          "type": "group",
+          "name": "t:names.row",
+          "blocks": {
+            "tile_sealed": {
+              "type": "category-tile",
+              "name": "Fresh Sealed Product tile",
+              "settings": {
+                "collection": "sealed-product",
+                "icon": "sealed",
+                "heading": "Fresh Sealed Product",
+                "description": "Booster packs, boxes, and mini-sets from the newest releases, sourced through official wholesale channels — not picked-over shelves."
+              },
+              "blocks": {}
+            },
+            "tile_singles": {
+              "type": "category-tile",
+              "name": "Hand-Picked Singles tile",
+              "settings": {
+                "collection": "singles",
+                "icon": "singles",
+                "heading": "Hand-Picked Singles",
+                "description": "Every card checked and priced by hand — never a bulk scan-and-list."
+              },
+              "blocks": {}
+            },
+            "tile_grading": {
+              "type": "category-tile",
+              "name": "Grading-Ready Pulls tile",
+              "settings": {
+                "collection": "grading-ready-pulls",
+                "icon": "grading",
+                "heading": "Grading-Ready Pulls",
+                "description": "Sourced and handled with PSA submission standards in mind."
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "tile_sealed",
+            "tile_singles",
+            "tile_grading"
+          ],
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-start",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 24,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "text_ak9aRq",
+        "text_ymqw39",
+        "button_wRiFF7",
+        "tiles_row"
       ],
-      "name": "t:names.hero",
+      "name": "Hero — Liberty TCG",
       "settings": {
-        "media_type_1": "image",
-        "image_1": "shopify://shop_images/PokeLiberty_Hero_Banner.png",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
-        "media_type_1_mobile": "image",
-        "media_type_2_mobile": "image",
-        "link": "",
-        "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 40,
         "section_width": "page-width",
-        "section_height": "medium",
+        "section_height": "",
         "section_height_custom": 50,
-        "background_color": "rgba(0,0,0,0)",
+        "background_media": "none",
+        "background_color": "{{ settings.color_palette.background }}",
+        "video_position": "cover",
+        "background_image_position": "cover",
         "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
+        "overlay_color": "#C9A24B26",
+        "overlay_style": "gradient",
         "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 72,
+        "padding-block-end": 56
       }
     },
     "product_list_fa6P9H": {
@@ -203,7 +308,7 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -272,12 +377,14 @@
           ]
         }
       },
-      "name": "t:names.product_list",
+      "name": "Showcase carousel",
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
+        "collection": "showcase",
+        "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "max_products": 8,
+        "autoplay": true,
+        "autoplay_speed": 30,
+        "max_products": 12,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
@@ -292,239 +399,10 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
-    },
-    "section_WTQwyt": {
-      "type": "section",
-      "blocks": {
-        "text_ak9aRq": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Liberty TCG</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_ymqw39": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>We're collectors first — every pack sourced through authorized wholesale channels, every card hand-checked before it's listed.</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "button_wRiFF7": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop now",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button",
-            "custom_button_background": "{{ settings.color_palette.foreground }}",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "link_text_color": "",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_ak9aRq",
-        "text_ymqw39",
-        "button_wRiFF7"
-      ],
-      "name": "t:names.rich_text_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 25,
-        "section_width": "page-width",
-        "section_height": "small",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
-    "collection_tiles_pl01": {
-      "type": "section",
-      "blocks": {
-        "tiles_row": {
-          "type": "group",
-          "name": "t:names.row",
-          "blocks": {
-            "tile_sealed": {
-              "type": "category-tile",
-              "name": "Fresh Sealed Product tile",
-              "settings": {
-                "collection": "sealed-product",
-                "icon": "sealed",
-                "heading": "Fresh Sealed Product",
-                "description": "Booster packs, boxes, and mini-sets from the newest releases, sourced through official wholesale channels — not picked-over shelves."
-              },
-              "blocks": {}
-            },
-            "tile_singles": {
-              "type": "category-tile",
-              "name": "Hand-Picked Singles tile",
-              "settings": {
-                "collection": "singles",
-                "icon": "singles",
-                "heading": "Hand-Picked Singles",
-                "description": "Every card checked and priced by hand — never a bulk scan-and-list."
-              },
-              "blocks": {}
-            },
-            "tile_grading": {
-              "type": "category-tile",
-              "name": "Grading-Ready Pulls tile",
-              "settings": {
-                "collection": "grading-ready-pulls",
-                "icon": "grading",
-                "heading": "Grading-Ready Pulls",
-                "description": "Sourced and handled with PSA submission standards in mind."
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "tile_sealed",
-            "tile_singles",
-            "tile_grading"
-          ],
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-start",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 24,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
-        }
-      },
-      "block_order": [
-        "tiles_row"
-      ],
-      "name": "Category Tiles",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 48
-      }
     }
   },
   "order": [
-    "section_WTQwyt",
-    "collection_tiles_pl01",
-    "hero_jVaWmY",
+    "hero_lbty01",
     "product_list_fa6P9H"
   ]
 }
