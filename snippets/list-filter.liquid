@@ -24,6 +24,31 @@
   if filter.presentation == 'image'
     assign is_image = true
   endif
+
+  # Series/Set filter: Shopify's own value order isn't chronological (roughly
+  # product-count order), so reorder to newest-set-first using an explicit
+  # priority list. Anything not in the list (a code/series not yet added
+  # here) falls through in whatever order Shopify returned it, appended
+  # after the known ones -- new sets never disappear, they just start at
+  # the bottom until this list is updated.
+  assign ordered_values = filter.values
+  assign is_series_filter = false
+  if filter.param_name contains 'series'
+    assign is_series_filter = true
+    assign series_priority = "Chaos Rising|Perfect Order|Ascended Heroes|Phantasmal Flames|Mega Evolution|Black Bolt|White Flare|Destined Rivals|Journey Together|Prismatic Evolutions|Surging Sparks|Stellar Crown|Shrouded Fable|Twilight Masquerade|Temporal Forces|Paldean Fates|Paradox Rift|151|Obsidian Flames|Paldea Evolved|Scarlet & Violet Base|Scarlet & Violet Energies|Scarlet & Violet Promos|Crown Zenith|Sword & Shield Base|Rebel Clash|Darkness Ablaze|Champion's Path|Vivid Voltage|Battle Styles|Chilling Reign|Evolving Skies|Celebrations|Fusion Strike|Brilliant Stars|Astral Radiance|Pokémon GO|Lost Origin|Silver Tempest|Sword & Shield Promos|Sun & Moon Base|Team Up|Unified Minds|Cosmic Eclipse|Hidden Fates|XY Base|Evolutions|Generations|Base Set 2|Base Set|Jungle|Fossil|Team Rocket|Neo Genesis|Gym Heroes|McDonald's Collection|Promos" | split: '|'
+    assign new_ordered = '' | split: ''
+    for series_name in series_priority
+      assign matches = filter.values | where: 'label', series_name
+      assign new_ordered = new_ordered | concat: matches
+    endfor
+    for value in filter.values
+      unless series_priority contains value.label
+        assign leftover_match = filter.values | where: 'label', value.label
+        assign new_ordered = new_ordered | concat: leftover_match
+      endunless
+    endfor
+    assign ordered_values = new_ordered
+  endif
 %}
 
 {%- liquid
@@ -133,8 +158,16 @@
           if is_swatch and show_swatch_label
             assign should_render_for_swatch = false
           endif
-          if filter.values.size > max_visible_values and should_render_for_swatch == false
+          if filter.values.size > max_visible_values and should_render_for_swatch == false and is_series_filter == false
             assign render_show_more = true
+          endif
+
+          # Long value lists (Series/Set can run 50+) get a scrollable panel
+          # instead of the click-to-expand "show more" pattern -- everything
+          # renders up front, capped to a fixed height.
+          assign is_scrollable_list = false
+          if is_series_filter or filter.values.size > 20
+            assign is_scrollable_list = true
           endif
         %}
         {% liquid
@@ -147,7 +180,7 @@
           endif
           assign should_use_pills = true
 
-          for value in filter.values
+          for value in ordered_values
             if value.label.size > 3
               assign should_use_pills = false
               break
@@ -191,7 +224,7 @@
           %}
           <ul
             id="filters-list-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
-            class="facets__inputs-list{% if should_use_pills %} facets__inputs-list--grid{% endif %} list-unstyled{% if is_swatch %} facets__inputs-list--swatches{% if show_swatch_label %} facets__inputs-list--swatches-grid{% endif %}{% endif %}{% if is_image %} facets__inputs-list--images{% endif %}"
+            class="facets__inputs-list{% if should_use_pills %} facets__inputs-list--grid{% endif %} list-unstyled{% if is_swatch %} facets__inputs-list--swatches{% if show_swatch_label %} facets__inputs-list--swatches-grid{% endif %}{% endif %}{% if is_image %} facets__inputs-list--images{% endif %}{% if is_scrollable_list %} facets__inputs-list--scrollable{% endif %}"
             {% if is_swatch %}
               style="--swatch-columns: {{ swatch_columns }};"
             {% endif %}
@@ -200,7 +233,7 @@
             {% endif %}
             name="{{ filter.label }}"
           >
-            {%- for value in filter.values -%}
+            {%- for value in ordered_values -%}
               {% liquid
                 assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index | replace: '.', '-' | append: '-' | append: filter_style | append: '-' | append: in_drawer
                 assign is_disabled = false
@@ -690,6 +723,15 @@
     display: grid;
     grid-template-columns: repeat(var(--image-columns), 125px);
     gap: var(--gap-sm);
+  }
+
+  /* Long value lists (Series/Set, or anything else that grows past ~20
+     options) scroll within a fixed height instead of the click-to-expand
+     "show more" pattern used for shorter lists. */
+  .facets__inputs-list--scrollable {
+    max-height: 16rem;
+    overflow-y: auto;
+    padding-right: var(--padding-2xs);
   }
 
   .facets--drawer .facets__inputs-wrapper .facets__inputs-list--images {
